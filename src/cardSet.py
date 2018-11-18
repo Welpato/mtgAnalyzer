@@ -17,6 +17,13 @@ class cardSet:
 		return [self.commonCards.shape[0], self.uncommonCards.shape[0], 
 				self.rareCards.shape[0], self.mythicCards.shape[0]]
 
+	def returnMedianCmcPerRarity(self):
+		return [self.commonCards['cmc'].median(), self.uncommonCards['cmc'].median(), 
+				self.rareCards['cmc'].median(), self.mythicCards['cmc'].median()]
+
+	def returnCardListByNameWith(self, checkString):
+		return self.setFile[self.setFile['name'].str.contains(checkString)]
+
 	def returnMythicCards(self):
 		return self.mythicCards
 

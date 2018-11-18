@@ -18,30 +18,37 @@ class mtgBase:
 
 	def __init__(self, cardSetList):
 		self.cardSetList = []
+		self.rarity = rEntity.rarity()
 
 		for name in cardSetList:
 			self.cardSetList.append(cs.cardSet(name))	
 
+	#Plot the total of cards of each set
 	def plotCardsTotal(self):
-		r = rEntity.rarity()
-
-		barCountList = []
-		fillRight = 0
-		count = 0
 		for cardSet in self.cardSetList:
 			
-			plt.bar(r.rarityList, cardSet.returnTotalCardsPerRarity(),
-					color=r.rarityColors)
+			plt.bar(self.rarity.rarityList, cardSet.returnTotalCardsPerRarity(),
+					color=self.rarity.rarityColors)
 			
 			plt.title( cardSet.setName +
 							' Total cards :' + str(cardSet.returnSetFile().shape[0]))
-			
-			if(fillRight == 1):			
-				fillRight = 0
-				count = count + 1
-			else:
-				fillRight = 1
 
 			plt.show()
 
+	#Plot the median CMC per rarity of each set
+	def plotMedianCmc(self):
+		for cardSet in self.cardSetList:
+			
+			plt.bar(self.rarity.rarityList, cardSet.returnMedianCmcPerRarity(),
+					color=self.rarity.rarityColors)
+			
+			plt.title( cardSet.setName +
+							' Median CMC :' + str(cardSet.returnSetFile()['cmc'].median()))
+
+			plt.show()
+
+	#Plot all the cards in the set with the given string in the name
+	def plotCardsNameWith(self, checkString):
+		for cardSet in self.cardSetList:
+			display(cardSet.returnCardListByNameWith(checkString))
 
