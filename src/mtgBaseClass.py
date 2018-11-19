@@ -52,3 +52,7 @@ class mtgBase:
 		for cardSet in self.cardSetList:
 			display(cardSet.returnCardListByNameWith(checkString))
 
+	#Plot all the cards in the set with the given color identity
+	def plotCardsWithColorIdentity(self, colorIdentity):
+		for cardSet in self.cardSetList:
+			display(cardSet.returnCardListByColorIdentity(colorIdentity))

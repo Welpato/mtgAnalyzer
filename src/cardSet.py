@@ -1,5 +1,6 @@
 import pandas as pd
 import src.entity.rarityEntity as rEntity
+import src.entity.colorPieEntity as colorPie
 
 class cardSet:
 	def __init__(self, setName):
@@ -23,6 +24,9 @@ class cardSet:
 
 	def returnCardListByNameWith(self, checkString):
 		return self.setFile[self.setFile['name'].str.contains(checkString)]
+
+	def returnCardListByColorIdentity(self, colorIdentity):
+		return self.setFile[self.setFile['color_identity'] == colorIdentity]
 
 	def returnMythicCards(self):
 		return self.mythicCards
