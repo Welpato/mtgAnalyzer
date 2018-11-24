@@ -1,2 +1,3 @@
-dataSet/
+dataSet/allSets.csv
+dataSet/sets/*
 .ipynb_checkpoints

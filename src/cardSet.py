@@ -28,17 +28,13 @@ class cardSet:
 	def returnCardListByColorIdentity(self, colorIdentity):
 		return self.setFile[self.setFile['color_identity'] == colorIdentity]
 
-	def returnMythicCards(self):
-		return self.mythicCards
+	def returnCardListBy(self,columnFilter, filterValue, showColumns=[]):
+		fList = filter(self.filterCardListBy,self.setFile,columnFilter,filterValue)
+		if showColumns.empty:
+			return fList.filter()
+		else:
+			return fList.filter(items=showColumns)
 
-	def returnRareCards(self):
-		return self.rareCards
-
-	def returnUncommonCards(self):
-		return self.uncommonCards
-
-	def returnCommonCards(self):
-		return self.commonCards
-
-	def returnSetFile(self):
-		return self.setFile
+	def filterCardListBy(self,listToFilter,columnFilter, filterValue):
+		return listToFilter
+		#Finish this filter function based on the new cardEntity
