@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 import src.cardSet as cs
 import src.entity.rarityEntity as rEntity
+import src.entity.cardEntity as cEntity
 
 from IPython.display import display, HTML
 
@@ -20,6 +21,7 @@ class mtgBase:
 	def __init__(self, cardSetList = []):
 		self.cardSetList = []
 		self.rarity = rEntity.rarity()
+		self.card = cEntity.cardEntity()
 
 		if(cardSetList == []):
 			with open('dataSet/allSets.csv', 'r', encoding='utf-8') as setsFile:
@@ -62,7 +64,7 @@ class mtgBase:
 	def plotCardsNameWith(self, checkString):
 		for cardSet in self.cardSetList:
 			print(cardSet.setName)
-			displayList = cardSet.returnCardListByNameWith(checkString)
+			displayList = cardSet.returnCardListByStringContaint(self.card.name, checkString)
 			if not displayList.empty:
 				display(displayList)
 
@@ -77,6 +79,5 @@ class mtgBase:
 		for cardSet in self.cardSetList:
 			print(cardSet.setName)
 			displayList = cardSet.returnCardListBy(columnFilter,filterValue)
-			#if not displayList.empty:
 			display(displayList)
 

@@ -1,33 +1,35 @@
 class cardEntity:
-	name
-	multiverse_id
-	layout
-	names
-	mana_cost
-	cmc	colors
-	color_identity
-	type
-	supertypes
-	subtypes
-	rarity
-	text
-	flavor
-	artist
-	number
-	power
-	toughness
-	border
-	life
-	reserved
-	release_date
-	starter
-	rulings
-	foreign_names
-	printings
-	original_text
-	original_type
-	legalities
-	source
-	image_url
-	set
-	set_name
+	#Need to somehow relate to a filter type of the returnCardListBy
+	name = 'name'
+	multiverse_id = 'multiverse_id'
+	layout = 'layout'
+	names = 'names'
+	mana_cost = 'mana_cost'
+	cmc	= 'cmc'
+	colors = 'colors'
+	color_identity = 'color_identity'
+	type = 'type'
+	supertypes = 'supertypes'
+	subtypes = 'subtypes'
+	rarity = 'rarity'
+	text = 'text'
+	flavor = 'flavor'
+	artist = 'artist'
+	number = 'number'
+	power = 'power'
+	toughness = 'toughness'
+	border = 'border'
+	life = 'life'
+	reserved = 'reserved'
+	release_date = 'release_date'
+	starter = 'starter'
+	rulings = 'rulings'
+	foreign_names = 'foreign_names'
+	printings = 'printings'
+	original_text = 'original_text'
+	original_type = 'original_type'
+	legalities = 'legalities'
+	source = 'source'
+	image_url = 'image_url'
+	set = 'set'
+	set_name = 'set_name'
