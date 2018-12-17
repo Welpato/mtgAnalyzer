@@ -26,14 +26,11 @@ class cardSet:
 		return self.setFile[self.setFile['color_identity'] == colorIdentity]
 
 	def returnCardListByStringContaint(self, columnFilter,checkString):
-		return self.setFile[self.setFile[columnFilter].str.contains(checkString)]
+		return self.setFile[self.setFile[columnFilter].str.contains(checkString, na=False)]
 
 	#This should contain a list of possible filters based
 	#And each column inside the cardEntity should be related to a possible filter
 	def returnCardListBy(self,columnFilter, filterValue, showColumns=[]):
-		filterType = 'text'
 		return {
-			'text': self.returnCardListByStringContaint(columnFilter, filterValue),
-		}[filterType]
-
-		return fList
+			'text': self.returnCardListByStringContaint(columnFilter.columnName, filterValue),
+		}.get(columnFilter.filterType, 'Filter type not found')
