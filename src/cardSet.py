@@ -22,23 +22,15 @@ class cardSet:
 		return [self.commonCards['cmc'].median(), self.uncommonCards['cmc'].median(), 
 				self.rareCards['cmc'].median(), self.mythicCards['cmc'].median()]
 
-	def returnCardListByNameWith(self, checkString):
-		return self.setFile[self.setFile['name'].str.contains(checkString)]
-
 	def returnCardListByColorIdentity(self, colorIdentity):
 		return self.setFile[self.setFile['color_identity'] == colorIdentity]
 
-	def returnMythicCards(self):
-		return self.mythicCards
+	def returnCardListByStringContaint(self, columnFilter,checkString):
+		return self.setFile[self.setFile[columnFilter].str.contains(checkString, na=False)]
 
-	def returnRareCards(self):
-		return self.rareCards
-
-	def returnUncommonCards(self):
-		return self.uncommonCards
-
-	def returnCommonCards(self):
-		return self.commonCards
-
-	def returnSetFile(self):
-		return self.setFile
+	#This should contain a list of possible filters based
+	#And each column inside the cardEntity should be related to a possible filter
+	def returnCardListBy(self,columnFilter, filterValue, showColumns=[]):
+		return {
+			'text': self.returnCardListByStringContaint(columnFilter.columnName, filterValue),
+		}.get(columnFilter.filterType, 'Filter type not found')
