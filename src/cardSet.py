@@ -1,6 +1,5 @@
 import pandas as pd
 import src.entity.rarityEntity as rEntity
-import src.entity.colorPieEntity as colorPie
 
 class cardSet:
 	def __init__(self, setName):
@@ -22,8 +21,8 @@ class cardSet:
 		return [self.commonCards['cmc'].median(), self.uncommonCards['cmc'].median(), 
 				self.rareCards['cmc'].median(), self.mythicCards['cmc'].median()]
 
-	def returnCardListByColorIdentity(self, colorIdentity):
-		return self.setFile[self.setFile['color_identity'] == colorIdentity]
+	def returnCardListByRegex(self, columnFilter, checkRegex):
+		return self.setFile[self.setFile[columnFilter].str.contains(checkRegex, na=False, regex=True)]
 
 	def returnCardListByStringContaint(self, columnFilter,checkString):
 		return self.setFile[self.setFile[columnFilter].str.contains(checkString, na=False)]
@@ -33,4 +32,5 @@ class cardSet:
 	def returnCardListBy(self,columnFilter, filterValue, showColumns=[]):
 		return {
 			'text': self.returnCardListByStringContaint(columnFilter.columnName, filterValue),
+			'regex': self.returnCardListByRegex(columnFilter.columnName, filterValue)
 		}.get(columnFilter.filterType, 'Filter type not found')

@@ -1,4 +1,4 @@
-class cardEntity:
+class card:
 	class cardColumn:
 		def __init__(self, columnName, filterType = ''):
 			self.columnName = columnName
@@ -10,8 +10,8 @@ class cardEntity:
 	names = cardColumn('names','text')
 	mana_cost = cardColumn('mana_cost','')
 	cmc	= cardColumn('cmc','')
-	colors = cardColumn('colors','')
-	color_identity = cardColumn('color_identity','')
+	colors = cardColumn('colors','regex')
+	color_identity = cardColumn('color_identity','regex')
 	type = cardColumn('type','')
 	supertypes = cardColumn('supertypes','')
 	subtypes = cardColumn('subtypes','')

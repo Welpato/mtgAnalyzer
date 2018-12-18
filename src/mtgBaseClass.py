@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import src.cardSet as cs
 import src.entity.rarityEntity as rEntity
 import src.entity.cardEntity as cEntity
+import src.entity.colorPieEntity as colorEntity
 
 from IPython.display import display, HTML
 
@@ -21,7 +22,8 @@ class mtgBase:
 	def __init__(self, cardSetList = []):
 		self.cardSetList = []
 		self.rarity = rEntity.rarity()
-		self.card = cEntity.cardEntity()
+		self.card = cEntity.card()
+		self.colorPie = colorEntity.colorPie()
 
 		if(cardSetList == []):
 			with open('dataSet/allSets.csv', 'r', encoding='utf-8') as setsFile:
@@ -60,24 +62,9 @@ class mtgBase:
 
 			plt.show()
 
-	#Plot all the cards in the set with the given string in the name
-	def plotCardsNameWith(self, checkString):
-		for cardSet in self.cardSetList:
-			print(cardSet.setName)
-			displayList = cardSet.returnCardListByStringContaint(self.card.name, checkString)
-			if not displayList.empty:
-				display(displayList)
-
-	#Plot all the cards in the set with the given color identity
-	def plotCardsWithColorIdentity(self, colorIdentity):
-		for cardSet in self.cardSetList:
-			print(cardSet.setName)
-			display(cardSet.returnCardListByColorIdentity(colorIdentity))
-
-
+	#Plot a list of cards based on the columnFilter filtering by the filterValue
 	def plotListBy(self, columnFilter, filterValue):
 		for cardSet in self.cardSetList:
 			print(cardSet.setName)
 			displayList = cardSet.returnCardListBy(columnFilter,filterValue)
 			display(displayList)
-
