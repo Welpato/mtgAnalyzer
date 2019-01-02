@@ -62,9 +62,19 @@ class mtgBase:
 
 			plt.show()
 
-	#Plot a list of cards based on the columnFilter filtering by the filterValue
-	def plotListBy(self, columnFilter, filterValue):
-		for cardSet in self.cardSetList:
+	#Apply an filter to the cardSetList informed and returns the filtred list
+	def filterCardSetListBy(self, cardSetList, columnFilter, filterValue):
+		returnList = []
+		for cardSet in cardSetList:
+			cardSet.data = cardSet.returnCardListBy(columnFilter,filterValue)
+			returnList.append(cardSet)
+
+		return returnList
+
+	#Plot a filtred set list
+	def plotCardSetList(self,cardSetList):
+		for cardSet in cardSetList:
 			print(cardSet.setName)
-			displayList = cardSet.returnCardListBy(columnFilter,filterValue)
-			display(displayList)
+			display(cardSet.data)
+
+

@@ -30,14 +30,14 @@ class downloadMtgInfo:
                 filename = re.sub(r'[\\/:"*?<>|]+', '', row['name'])
                 with open('dataSet/sets/'+filename+ '.csv', 'w', encoding='utf-8') as exSetFile:
                     writerCard = csv.writer(exSetFile, delimiter=',',quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                    writerCard.writerow(['name','multiverse_id','layout','names','mana_cost','cmc','colors',
+                    writerCard.writerow(['name','multiverse_id','layout','mana_cost','cmc','colors',
                                         'color_identity','type','supertypes','subtypes','rarity','text','flavor',
                                         'artist','number','power','toughness','loyalty','variations','watermark','border',
                                         'timeshifted','hand','life','reserved','release_date','starter','rulings','foreign_names',
                                         'printings','original_text','original_type','legalities','source','image_url',
                                         'set','set_name','id'])
                     for card in cards:
-                        writerCard.writerow([card.name,card.multiverse_id,card.layout,card.names,card.mana_cost,card.cmc,card.colors,card.color_identity,
+                        writerCard.writerow([card.name,card.multiverse_id,card.layout,card.mana_cost,card.cmc,card.colors,card.color_identity,
                             card.type,card.supertypes,card.subtypes,card.rarity,card.text,card.flavor,
                             card.artist,card.number,card.power,card.toughness,card.loyalty,card.variations,card.watermark,card.border,
                             card.timeshifted,card.hand,card.life,card.release_date,card.starter,card.rulings,card.foreign_names,
