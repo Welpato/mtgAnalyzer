@@ -46,7 +46,7 @@ class mtgBase:
 					color=self.rarity.rarityColors)
 			
 			plt.title( cardSet.setName +
-							' Total cards :' + str(cardSet.setFile.shape[0]))
+							' Total cards :' + str(cardSet.setData.shape[0]))
 
 			plt.show()
 
@@ -58,15 +58,16 @@ class mtgBase:
 					color=self.rarity.rarityColors)
 			
 			plt.title( cardSet.setName +
-							' Median CMC :' + str(cardSet.setFile['cmc'].median()))
+							' Median CMC :' + str(cardSet.setData['cmc'].median()))
 
 			plt.show()
 
 	#Apply an filter to the cardSetList informed and returns the filtred list
-	def filterCardSetListBy(self, cardSetList, columnFilter, filterValue):
+	def filterCardSetListBy(self, originCardSetList, columnFilter, filterValue):
 		returnList = []
+		cardSetList = copy.deepcopy(originCardSetList)
 		for cardSet in cardSetList:
-			cardSet.data = cardSet.returnCardListBy(columnFilter,filterValue)
+			cardSet.setData = cardSet.returnCardListBy(columnFilter,filterValue)
 			returnList.append(cardSet)
 
 		return returnList
@@ -75,6 +76,6 @@ class mtgBase:
 	def plotCardSetList(self,cardSetList):
 		for cardSet in cardSetList:
 			print(cardSet.setName)
-			display(cardSet.data)
+			display(cardSet.setData)
 
 
