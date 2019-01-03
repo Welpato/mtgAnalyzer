@@ -35,14 +35,14 @@ class downloadMtgInfo:
                                         'artist','number','power','toughness','loyalty','variations','watermark','border',
                                         'timeshifted','hand','life','reserved','release_date','starter','rulings','foreign_names',
                                         'printings','original_text','original_type','legalities','source','image_url',
-                                        'set','set_name','id'])
+                                        'set','set_name'])
                     for card in cards:
                         writerCard.writerow([card.name,card.multiverse_id,card.layout,card.mana_cost,card.cmc,card.colors,card.color_identity,
                             card.type,card.supertypes,card.subtypes,card.rarity,card.text,card.flavor,
                             card.artist,card.number,card.power,card.toughness,card.loyalty,card.variations,card.watermark,card.border,
                             card.timeshifted,card.hand,card.life,card.release_date,card.starter,card.rulings,card.foreign_names,
                             card.printings,card.original_text,card.original_type,card.legalities,card.source,card.image_url,
-                            card.set,card.set_name,card.id])
+                            card.set,card.set_name])
                 
                 downloadedRows = downloadedRows + 1
                 print('Downloaded '+ str(downloadedRows) + ' from ' + str(totalRows) + ' total sets')
