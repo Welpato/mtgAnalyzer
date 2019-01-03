@@ -7,7 +7,7 @@ class card:
 	name = cardColumn('name','text')
 	multiverse_id = cardColumn('multiverse_id','')
 	layout = cardColumn('layout','')
-	mana_cost = cardColumn('mana_cost','')
+	mana_cost = cardColumn('mana_cost','regex')
 	cmc	= cardColumn('cmc','')
 	colors = cardColumn('colors','regex')
 	color_identity = cardColumn('color_identity','regex')

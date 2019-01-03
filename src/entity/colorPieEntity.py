@@ -49,3 +49,18 @@ class colorPie:
 
 		return colorIdentity
 
+	def regexCostColorRepeat(self, colorsToCheck, minimalRepeat):
+		regex = ""
+		moreThenOne = False
+
+		for color in colorsToCheck:
+			if moreThenOne == True:
+				regex = regex + "|"
+			regex = regex + "(\{" + color + "\})"
+			moreThenOne = True
+
+		if moreThenOne == True:
+			regex = regex + "{2,}"
+
+		return regex
+
