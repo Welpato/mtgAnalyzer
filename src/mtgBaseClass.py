@@ -39,8 +39,8 @@ class mtgBase:
 
 
 	#Plot the total of cards of each set
-	def plotCardsTotal(self):
-		for cardSet in self.cardSetList:
+	def plotCardsTotal(self, cardSetList):
+		for cardSet in cardSetList:
 			
 			plt.bar(self.rarity.rarityList, cardSet.returnTotalCardsPerRarity(),
 					color=self.rarity.rarityColors)
@@ -51,8 +51,8 @@ class mtgBase:
 			plt.show()
 
 	#Plot the median CMC per rarity of each set
-	def plotMedianCmc(self):
-		for cardSet in self.cardSetList:
+	def plotMedianCmc(self, cardSetList):
+		for cardSet in cardSetList:
 			
 			plt.bar(self.rarity.rarityList, cardSet.returnMedianCmcPerRarity(),
 					color=self.rarity.rarityColors)
