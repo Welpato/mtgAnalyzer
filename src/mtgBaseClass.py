@@ -9,6 +9,7 @@ import src.cardSet as cs
 import src.entity.rarityEntity as rEntity
 import src.entity.cardEntity as cEntity
 import src.entity.colorPieEntity as colorEntity
+import src.entity.regexEntity as regexEntity
 
 from IPython.display import display, HTML
 
@@ -24,6 +25,7 @@ class mtgBase:
 		self.rarity = rEntity.rarity()
 		self.card = cEntity.card()
 		self.colorPie = colorEntity.colorPie()
+		self.regex = regexEntity.regex()
 
 		if(cardSetList == []):
 			with open('dataSet/allSets.csv', 'r', encoding='utf-8') as setsFile:
@@ -36,17 +38,16 @@ class mtgBase:
 		else:
 			for name in cardSetList:
 				self.cardSetList.append(cs.cardSet(name))
-
-
+				
 	#Plot the total of cards of each set
-	def plotCardsTotal(self, cardSetList):
+	def plotCardsTotal(self, cardSetList, title = ''):
 		for cardSet in cardSetList:
 			
 			plt.bar(self.rarity.rarityList, cardSet.returnTotalCardsPerRarity(),
 					color=self.rarity.rarityColors)
 			
 			plt.title( cardSet.setName +
-							' Total cards :' + str(cardSet.setData.shape[0]))
+							title + ' Total cards :' + str(cardSet.setData.shape[0]))
 
 			plt.show()
 
