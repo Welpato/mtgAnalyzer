@@ -68,7 +68,7 @@ class mtgBase:
 		returnList = []
 		cardSetList = copy.deepcopy(originCardSetList)
 		for cardSet in cardSetList:
-			cardSet.setData = cardSet.returnCardListBy(columnFilter,filterValue)
+			cardSet.defineSetData(cardSet.returnCardListBy(columnFilter,filterValue))
 			returnList.append(cardSet)
 
 		return returnList

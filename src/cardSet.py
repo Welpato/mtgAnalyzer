@@ -5,13 +5,8 @@ class cardSet:
 	def __init__(self, setName):
 		self.setName = setName
 
-		self.setData = pd.read_csv('dataSet/sets/'+self.setName+'.csv')
-
-		r = rEntity.rarity()
-		self.mythicCards = self.setData[self.setData['rarity'] == r.mythicRare]
-		self.rareCards = self.setData[self.setData['rarity'] == r.rare]
-		self.uncommonCards = self.setData[self.setData['rarity'] == r.uncommon]
-		self.commonCards = self.setData[self.setData['rarity'] == r.common]
+		self.defineSetData(pd.read_csv('dataSet/sets/'+self.setName+'.csv'))
+		
 
 	def returnTotalCardsPerRarity(self):
 		return [self.commonCards.shape[0], self.uncommonCards.shape[0], 
@@ -34,3 +29,13 @@ class cardSet:
 			'text': self.returnCardListByStringContaint(columnFilter.columnName, filterValue),
 			'regex': self.returnCardListByRegex(columnFilter.columnName, filterValue)
 		}.get(columnFilter.filterType, 'Filter type not found')
+
+
+	def defineSetData(self, setInfo):
+		self.setData = setInfo
+
+		r = rEntity.rarity()
+		self.mythicCards = self.setData[self.setData['rarity'] == r.mythicRare]
+		self.rareCards = self.setData[self.setData['rarity'] == r.rare]
+		self.uncommonCards = self.setData[self.setData['rarity'] == r.uncommon]
+		self.commonCards = self.setData[self.setData['rarity'] == r.common]
